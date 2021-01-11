@@ -38,8 +38,10 @@ WeatherData
 - location
 - time of weather recorded
 - description of weather
+
 WeatherImage
 - icon of the kind of weather thats occurring
+
 Temperature
 - celsius
 
