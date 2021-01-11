@@ -3,5 +3,5 @@ export function Temperature(props) {
     <div className="temperature">
       <h1>{props.temperature} degrees</h1>
     </div>
-  )
+  );
 }
