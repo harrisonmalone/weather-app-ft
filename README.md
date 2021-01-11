@@ -22,15 +22,15 @@
 ## Other use cases for props
 
 1.
-react router
-generally libraries
-props
+- react router
+- generally libraries
+- props
 
 2.
-templating, children prop
+- templating, children prop
 
 3.
-generally passing data between different components
+- generally passing data between different components
 
 ## Components used 
 
