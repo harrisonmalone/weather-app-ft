@@ -1,18 +1,15 @@
-import React from "react";
+import { Component } from "react";
 import { Temperature } from "./Temperature";
 import { WeatherData } from "./WeatherData";
 import { WeatherImage } from "./WeatherImage";
 import { WeatherWidget } from "../templates/WeatherWidget";
 import { SearchInput } from "./SearchInput";
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      weatherData: null,
-      query: "Melbourne"
-    };
-  }
+class App extends Component {
+  state = {
+    weatherData: null,
+    query: "Melbourne"
+  };
 
   async componentDidMount() {
     // fetch remote resources
