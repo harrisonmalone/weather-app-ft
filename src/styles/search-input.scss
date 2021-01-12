@@ -1,0 +1,16 @@
+.search-input {
+  margin: 20px 0px;
+  label {
+    display: block;
+    margin: 5px 0px;
+  }
+  #location {
+    width: 100%;
+    padding: 0px;
+    height: 25px;
+    font-size: 20px;
+  }
+  input[type=submit] {
+    margin: 10px 0px;
+  }
+}
