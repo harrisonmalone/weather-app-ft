@@ -31,7 +31,7 @@ function App() {
         setWeatherData(data);
       })
       .catch((err) => {
-        console.log(err.message);
+        alert(err.message)
       });
   }, [query]);
 
