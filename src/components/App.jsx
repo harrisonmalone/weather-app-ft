@@ -10,15 +10,38 @@ class App extends React.Component {
     super(props);
     this.state = {
       weatherData: null,
+      query: "Melbourne"
     };
   }
 
   async componentDidMount() {
     // fetch remote resources
     // get data from an api
+    this.fetchLatestWeather()
+  }
+
+  setQuery = (query) => {
+    // because setState is async when we call fetchLatestWeather
+    // we need query to be the new query that comes from the search input
+    // one way to ensure this is the case is to use the callback notation
+    // that comes with setState
+    this.setState({
+      query: query
+    }, () => {
+      this.fetchLatestWeather();
+    })
+  }
+
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (this.state.query !== prevState.query) {
+  //     this.fetchLatestWeather()
+  //   }
+  // }
+
+  fetchLatestWeather = async () => {
     try {
       const response = await fetch(
-        "http://api.weatherstack.com/current?access_key=207e49535dcc72806118f758b6312595&query=Melbourne"
+        `http://api.weatherstack.com/current?access_key=207e49535dcc72806118f758b6312595&query=${this.state.query}`
       );
       const data = await response.json();
       this.setState({
@@ -30,6 +53,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.state)
     const { weatherData } = this.state;
     if (weatherData) {
       const {
@@ -50,7 +74,7 @@ class App extends React.Component {
             <WeatherImage icon={weather_icons[0]} />
             <Temperature temperature={temperature} />
           </WeatherWidget>
-          <SearchInput />
+          <SearchInput setQuery={this.setQuery} />
         </div>
       );
     } else {
