@@ -1,35 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 
-export class SearchInput extends React.Component {
-  state = {
-    location: "",
+export function SearchInput(props) {
+  const [location, setLocation] = useState("");
+
+  function onInputChange(e) {
+    setLocation(e.target.value)    
   };
 
-  onInputChange = (e) => {
-    this.setState({
-      location: e.target.value
-    })
-  } 
+  function onFormSubmit(e) {
+    e.preventDefault();
+    // invoking a function
+    // passing that function through as props
+    // lifting state
+    props.setQuery(location);
+  };
 
-  onFormSubmit = (e) => {
-    e.preventDefault()
-    this.props.setQuery(this.state.location)
-  }
-
-  render() {
-    return (
-      <form className="search-input" onSubmit={this.onFormSubmit} >
-        <label htmlFor="location">Location</label>
-        <input
-          type="text"
-          name="location"
-          id="location"
-          placeholder="Sydney"
-          value={this.state.location}
-          onChange={this.onInputChange}
-        />
-        <input type="submit" value="Search" />
-      </form>
-    );
-  }
+  return (
+    <form className="search-input" onSubmit={onFormSubmit}>
+      <label htmlFor="location">Location</label>
+      <input
+        type="text"
+        name="location"
+        id="location"
+        placeholder="Sydney"
+        value={location}
+        onChange={onInputChange}
+      />
+      <input type="submit" value="Search" />
+    </form>
+  );
 }

@@ -5,16 +5,26 @@ import { WeatherImage } from "./WeatherImage";
 import { WeatherWidget } from "../templates/WeatherWidget";
 import { SearchInput } from "./SearchInput";
 
+// functional components (with hooks)
+// - simple stuff
+// - for rendering
+// - state
+
+// positives of using react hooks
+// - cleaner more readable code
+// - end with less code
+// - third party tools easier to use with react hooks
+
 class App extends Component {
   state = {
     weatherData: null,
-    query: "Melbourne"
+    query: "Melbourne",
   };
 
   async componentDidMount() {
     // fetch remote resources
     // get data from an api
-    this.fetchLatestWeather()
+    this.fetchLatestWeather();
   }
 
   setQuery = (query) => {
@@ -23,11 +33,11 @@ class App extends Component {
     // one way to ensure this is the case is to use the callback notation
     // that comes with setState
     this.setState({
-      query: query
+      query: query,
     }, () => {
       this.fetchLatestWeather();
-    })
-  }
+    });
+  };
 
   // componentDidUpdate(prevProps, prevState) {
   //   if (this.state.query !== prevState.query) {
@@ -47,10 +57,10 @@ class App extends Component {
     } catch (err) {
       console.log(err);
     }
-  }
+  };
 
   render() {
-    console.log(this.state)
+    console.log(this.state);
     const { weatherData } = this.state;
     if (weatherData) {
       const {
